@@ -1,0 +1,41 @@
+plugins {
+    id "io.micronaut.application" version '1.0.5'
+    id "com.google.cloud.tools.jib" version "2.5.0"
+}
+
+version "0.1"
+group "com.mikebd.playground"
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+micronaut {
+    runtime "netty"
+    testRuntime "junit5"
+    processing {
+        incremental true
+        annotations "com.mikebd.playground.*"
+    }
+}
+
+dependencies {
+    implementation("io.micronaut:micronaut-validation")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("javax.annotation:javax.annotation-api")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("org.apache.logging.log4j:log4j-core:2.12.1")
+    runtimeOnly("org.apache.logging.log4j:log4j-api:2.12.1")
+    runtimeOnly("org.apache.logging.log4j:log4j-slf4j-impl:2.12.1")
+}
+
+mainClassName = "com.mikebd.playground.Application"
+java {
+    sourceCompatibility = JavaVersion.toVersion('14')
+    targetCompatibility = JavaVersion.toVersion('14')
+}
+
+
+jib.to.image = 'gcr.io/scratch2/jib-image'
+
