@@ -2,6 +2,7 @@ plugins {
     id "io.micronaut.application" version '1.0.5'
     id "com.google.cloud.tools.jib" version "2.5.0"
     id "io.freefair.lombok" version "5.3.0"
+    id "com.gorylenko.gradle-git-properties" version "2.2.2"
 }
 
 version "0.1"
@@ -22,6 +23,7 @@ micronaut {
 }
 
 dependencies {
+    implementation("io.micronaut:micronaut-management")
     implementation("io.micronaut:micronaut-validation")
     implementation("io.micronaut:micronaut-runtime")
     implementation("javax.annotation:javax.annotation-api")

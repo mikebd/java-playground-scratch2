@@ -1,3 +1,8 @@
 micronaut:
   application:
     name: scratch2
+
+endpoints:
+  info:
+    enabled: true
+    sensitive: false
